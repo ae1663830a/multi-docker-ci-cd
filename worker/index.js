@@ -1,4 +1,4 @@
-const key = require('./keys');
+const keys = require('./keys');
 const redis = require('redis');
 
 const redisClient = redis.createClient({
@@ -7,7 +7,7 @@ const redisClient = redis.createClient({
     retry_strategy: () => 1000
 });
 
-const sub = redisClient.dublicate();
+const sub = redisClient.duplicate();
 
 // bad code
 const fib = index => {

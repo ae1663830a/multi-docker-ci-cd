@@ -31,7 +31,7 @@ const redisClient = redis.createClient({
     retry_strategy: () => 1000
 });
 
-const redisPublisher = redisClient.dublicate();
+const redisPublisher = redisClient.duplicate();
 
 // Express route handlers
 
