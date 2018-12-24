@@ -6,6 +6,14 @@ services:
   redis:
     image: 'redis:latest'
 
+  nginx:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:80"
+
   backend:
     build:
       context: server
