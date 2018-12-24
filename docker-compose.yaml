@@ -6,7 +6,7 @@ services:
   redis:
     image: 'redis:latest'
 
-  server:
+  backend:
     build:
       context: server
       dockerfile: Dockerfile
