@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t ae1663830a/front-test -f ./client/Dockerfile-dev ./client
+  - docker build -t ae1663830a/frontend-test -f ./client/Dockerfile-dev ./client
 
 script:
   - docker run ae1663830a/frontend-test npm run test -- --coverage
