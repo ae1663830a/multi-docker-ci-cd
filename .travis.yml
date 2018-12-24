@@ -12,7 +12,7 @@ after_success:
   - docker build -t ae1663830a/multi-frontend ./frontend
   - docker build -t ae1663830a/multi-nginx ./nginx
   - docker build -t ae1663830a/multi-postgres ./postgres
-  - docker build -t ae1663830a/multi-backend ./server
+  - docker build -t ae1663830a/multi-backend ./backend
   - docker build -t ae1663830a/multi-worker ./worker
   # Log in to the docker hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin

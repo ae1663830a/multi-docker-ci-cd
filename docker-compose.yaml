@@ -22,11 +22,11 @@ services:
 
   backend:
     build:
-      context: server
+      context: backend
       dockerfile: Dockerfile-dev
     volumes:
-      - /opt/server/node_modules
-      - ./server:/opt/server
+      - /opt/backend/node_modules
+      - ./backend:/opt/backend
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
