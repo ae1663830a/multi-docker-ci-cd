@@ -20,14 +20,14 @@ class Fib extends Component {
 
     fetchIndexes = async () => {
         const seenIndexes = await axios.get('/api/values/all');
-        this.setState({seenIndexes: seenIndexes})
+        this.setState({seenIndexes: seenIndexes.data})
     };
 
-    seenIndexesHandler = () =>
-        this.state.seenIndexes
-            .map((value, index) =>
-                <span key={index}> {value} </span>
-            );
+    seenIndexesHandler = () => this.state.seenIndexes
+        .map((number, index) => {
+            return <span key={index}>[{number.number}] </span>
+        });
+
 
     calcValuesHandler = () => {
         const entries = [];
