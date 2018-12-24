@@ -1,4 +1,5 @@
-FROM node:alpine
+# First part building static files
+FROM node:alpine as builder
 
 WORKDIR /opt/complex-app
 
@@ -8,5 +9,12 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "start"]
-EXPOSE 3000/tcp
+RUN npm run build
+
+# Second part copy necessary files to nginx server and run it
+FROM nginx
+# Configuration file
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+# Static files from react project
+COPY --from=builder /opt/complex-app/build /usr/share/nginx/html
+EXPOSE 3000
