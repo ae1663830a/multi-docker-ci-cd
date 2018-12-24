@@ -62,5 +62,4 @@ app.post('/values', async (req, res) => {
 });
 
 const port = 5000;
-app.listen(port, err => console.log(`Listening on port: ${port}`))
-    .catch(err => console.log(err));
+app.listen(port, () => console.log(`Listening on port: ${port}`));
