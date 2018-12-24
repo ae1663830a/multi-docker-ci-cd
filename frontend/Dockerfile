@@ -1,7 +1,7 @@
 # First part building static files
 FROM node:alpine as builder
 
-WORKDIR /opt/complex-app
+WORKDIR /opt/frontend
 
 COPY package.json .
 
@@ -16,5 +16,5 @@ FROM nginx
 # Configuration file
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 # Static files from react project
-COPY --from=builder /opt/complex-app/build /usr/share/nginx/html
+COPY --from=builder /opt/frontend/build /usr/share/nginx/html
 EXPOSE 3000

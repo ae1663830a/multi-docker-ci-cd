@@ -3,13 +3,13 @@ services:
   - docker
 
 before_install:
-  - docker build -t ae1663830a/frontend-test -f ./client/Dockerfile-dev ./client
+  - docker build -t ae1663830a/frontend-test -f ./frontend/Dockerfile-dev ./frontend
 
 script:
   - docker run ae1663830a/frontend-test npm run test -- --coverage
 
 after_success:
-  - docker build -t ae1663830a/multi-frontend ./client
+  - docker build -t ae1663830a/multi-frontend ./frontend
   - docker build -t ae1663830a/multi-nginx ./nginx
   - docker build -t ae1663830a/multi-postgres ./postgres
   - docker build -t ae1663830a/multi-backend ./server
