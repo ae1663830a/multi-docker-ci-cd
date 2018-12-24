@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ae1663830a/front-test -f ./client/Dockerfile-dev ./client
+
+script:
+  - docker run ae1663830a/frontend-test npm run test -- --coverage
+
+after_success:
+  - docker build -t ae1663830a/multi-frontend ./client
+  - docker build -t ae1663830a/multi-nginx ./nginx
+  - docker build -t ae1663830a/multi-postgres ./postgres
+  - docker build -t ae1663830a/multi-backend ./server
+  - docker build -t ae1663830a/multi-worker ./worker
+  # Log in to the docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Push images to docker hub
+  - docker push ae1663830a/multi-frontend
+  - docker push ae1663830a/multi-nginx
+  - docker push ae1663830a/multi-postgres
+  - docker push ae1663830a/multi-backend
+  - docker push ae1663830a/multi-worker
