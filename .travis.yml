@@ -41,7 +41,6 @@ deploy:
   # 2. Copy Access key ID and Secret access key from AWS to
   # Travis-CI -> react-docker -> More options -> Environment Variables
   # 3. Provide added variables here
-  access_key_id:
-    secure: "$AWS_ACCESS_KEY"
+  access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
