@@ -1,0 +1,39 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "frontend",
+      "image": "ae1663830a/multi-frontend",
+      "hostname": "frontend",
+      "essential": false
+    },
+    {
+      "name": "backend",
+      "image": "ae1663830a/multi-backend",
+      "hostname": "backend",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "ae1663830a/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "ae1663830a/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "frontend",
+        "backend"
+      ]
+    }
+  ]
+}
