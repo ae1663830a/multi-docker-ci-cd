@@ -5,19 +5,22 @@
       "name": "frontend",
       "image": "ae1663830a/multi-frontend",
       "hostname": "frontend",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "backend",
       "image": "ae1663830a/multi-backend",
       "hostname": "backend",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "worker",
       "image": "ae1663830a/multi-worker",
       "hostname": "worker",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "nginx",
@@ -33,7 +36,8 @@
       "links": [
         "frontend",
         "backend"
-      ]
+      ],
+      "memory": 128
     }
   ]
 }
