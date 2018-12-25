@@ -22,3 +22,26 @@ after_success:
   - docker push ae1663830a/multi-postgres
   - docker push ae1663830a/multi-backend
   - docker push ae1663830a/multi-worker
+
+deploy:
+  # data from aws (look for "Elastic Beanstalk", "S3", "IAM")
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker-ci-cd"
+  env: "MultiDockerCiCd-env"
+  # AWS services -> S3; choose existing or create new
+  bucket_name: "elasticbeanstalk-us-east-2-457461267368"
+  # Any path name you wish
+  bucket_path: "multi-docker-ci-cd"
+  on:
+    # deploy only if changes have been made on master branch
+    branch: master
+
+  # 1. Create user with full permissions to elasticbeanstalk on AWS
+  # 2. Copy Access key ID and Secret access key from AWS to
+  # Travis-CI -> react-docker -> More options -> Environment Variables
+  # 3. Provide added variables here
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
