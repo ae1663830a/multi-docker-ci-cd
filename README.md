@@ -16,7 +16,7 @@
 
 #### TODO: more info
 
-# USEFUL COMMANDS
+## USEFUL COMMANDS
 
 #### Docker
 
@@ -108,7 +108,7 @@ kubectl exec -it <pod-name> /bin/bash
 kubectl exec -it frontend-deployment-6c4c67957f-m5sck /bin/bash
 ```
 
-# USEFUL LINKS
+## USEFUL LINKS
 
 #### Docker Compose
   - [Docker compose documentation](https://docs.docker.com/compose/)
