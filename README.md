@@ -16,13 +16,13 @@
 
 ### Start application
 
-**IMPORTANT** Images which are used in the project must exist in [Docker Hub](https://hub.docker.com/search/?q=ae1663830a&type=image).
+**IMPORTANT** Images which are used in the project must exist in [Docker Hub](https://hub.docker.com/search/?q=ae1663830a&type=image).  
 Run command in the projects root directory
 ```bash
 kubectl apply -f k8s/
 ```
 
-To open application in browser as url enter minikube's ip address. Example: [192.168.99.100](https://192.168.99.100).
+To open application in browser as url enter minikube's ip address. Example: [192.168.99.100](https://192.168.99.100).  
 Get minikube's ip address run command
 ```bash
 minikube ip
