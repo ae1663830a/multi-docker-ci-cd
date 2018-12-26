@@ -14,9 +14,20 @@ spec:
       labels:
         component: postgresSQL
     spec:
+      # Assigning persistent volume
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
       containers:
         - name: postgres
           # Containers image repo from docker-hub
           image: ae1663830a/multi-postgres
           ports:
             - containerPort: 5432
+          volumeMounts:
+            # Location where postgres stores data
+            - mountPath: /var/lib/postgresql/data
+              subPath: postgres
+              # Choose the volume from volumes part ^
+              name: postgres-storage
