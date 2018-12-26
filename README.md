@@ -16,20 +16,19 @@
 
 ### Start application
 
+**IMPORTANT** Images which are used in the project must exist in [Docker Hub](https://hub.docker.com/search/?q=ae1663830a&type=image).
 Run command in the projects root directory
-**IMPORTANT** images which are used in the project must exist in [Docker Hub](https://hub.docker.com/search/?q=ae1663830a&type=image)
 ```bash
 kubectl apply -f k8s/
 ```
 
-To open application in browser as url enter minikube's ip address.
-As an example: [192.168.99.100](https://192.168.99.100)
+To open application in browser as url enter minikube's ip address. Example: [192.168.99.100](https://192.168.99.100).
 Get minikube's ip address run command
 ```bash
 minikube ip
 ```
 
-Get information about cluster in user interface run command
+To open minikube's dashboard in browser run command
 ```bash
 minikube dashboard
 ```
@@ -46,11 +45,11 @@ minikube dashboard
 
 ### Ingress configuration
 
-Execute command
+**IMPORTANT** *The following **Mandatory Command** is required for all deployments* as written in [documentation](https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command).
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 ```
-For minikube (dev environment) exec command
+For development environment with `minikube` additionally run command
 ```bash
 minikube addons enable ingress
 ```
