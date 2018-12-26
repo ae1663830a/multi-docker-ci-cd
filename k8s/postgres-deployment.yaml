@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  # How many pods will be created
+  replicas: 1
+  selector:
+    matchLabels:
+      component: postgresSQL
+  # Pods will be created by config below
+  template:
+    metadata:
+      labels:
+        component: postgresSQL
+    spec:
+      containers:
+        - name: postgres
+          # Containers image repo from docker-hub
+          image: ae1663830a/multi-postgres
+          ports:
+            - containerPort: 5432
