@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-cluster-ip-service
+  name: redis-cluster-ip-service
 spec:
   # values can be NodePort, ClusterIP, Ingress
   # ClusterIP - only components from same cluster can reach
   type: ClusterIP
   selector:
-    component: server
+    component: memory-cache
   ports:
     # Port to use inside the cluster
-    - port: 5000
-      # Actual port in pod (container) in server component
-      targetPort: 5000
-      protocol: TCP
+    - port: 6379
+      # Actual port in pod (container) in redis component
+      targetPort: 6379
