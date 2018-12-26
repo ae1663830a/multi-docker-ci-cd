@@ -14,6 +14,47 @@
 
 ## KUBERNETES
 
+### Start application
+
+Run command in the projects root directory
+**IMPORTANT** images which are used in the project must exist in [Docker Hub](https://hub.docker.com/search/?q=ae1663830a&type=image)
+```bash
+kubectl apply -f k8s/
+```
+
+To open application in browser as url enter minikube's ip address.
+As an example: [192.168.99.100](https://192.168.99.100)
+Get minikube's ip address run command
+```bash
+minikube ip
+```
+
+Get information about cluster in user interface run command
+```bash
+minikube dashboard
+```
+
+### Kubernetes objects (kind) used in this project
+#### Deployment
+#### Service
+  - ClusterIP
+  - Ingress
+#### PersistentVolumeClaim
+#### Secret
+  - Generic
+  - DockerRegistry
+
+### Ingress configuration
+
+Execute command
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+```
+For minikube (dev environment) exec command
+```bash
+minikube addons enable ingress
+```
+
 #### TODO: more info
 
 ## USEFUL COMMANDS
@@ -130,3 +171,5 @@ kubectl create secret generic pgpassword --from-literal PGPASSWORD=<password>
 
   - [Kubernetes setup](https://kubernetes.io/docs/setup/)
   - [Kubernetes persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+  - [Ingress nginx documentation](https://kubernetes.github.io/ingress-nginx/)
+  - [Studying the K8s Ingress system](https://www.joyfulbikeshedding.com/blog/2018-03-26-studying-the-kubernetes-ingress-system.html)
