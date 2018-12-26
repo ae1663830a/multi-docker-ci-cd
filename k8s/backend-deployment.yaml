@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  # How many pods will be created
+  replicas: 3
+  selector:
+    matchLabels:
+      component: server
+  # Pods will be created by config below
+  template:
+    metadata:
+      labels:
+        component: server
+    spec:
+      containers:
+        - name: backend
+          # Containers image repo from docker-hub
+          image: ae1663830a/multi-backend
+          ports:
+            - containerPort: 5000
