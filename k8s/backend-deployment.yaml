@@ -20,3 +20,20 @@ spec:
           image: ae1663830a/multi-backend
           ports:
             - containerPort: 5000
+          env:
+            # REDIS ENV VARIABLES
+            - name: REDIS_HOST
+              # name of redis-cluster-ip config
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+             # port of redis-cluster-ip
+              value: 6379
+            # POSTGRES ENV VARIABLES
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: 5432
+            - name: PGDATABASE
+              value: postgres

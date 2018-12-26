@@ -20,7 +20,6 @@
 
 #### Docker
 
-  - Most popular commands
 ```bash
 docker ps --all
 docker build -t <tag-name> <dockerfile-dir>
@@ -41,7 +40,6 @@ docker push ae1663830a/multi-frontend:1.0.0
 ```
 #### Docker Compose
 
-  - Most popular commands
 ```bash
 docker-compose ps
 docker-compose up --build
@@ -108,6 +106,12 @@ kubectl exec -it <pod-name> /bin/bash
 kubectl exec -it frontend-deployment-6c4c67957f-m5sck /bin/bash
 ```
 
+Get information of persistent volumes `pv` or persistent volume claims `pvc`
+```bash
+kubectl get pv
+kubectl describe pv
+```
+
 ## USEFUL LINKS
 
 #### Docker Compose
@@ -119,3 +123,4 @@ kubectl exec -it frontend-deployment-6c4c67957f-m5sck /bin/bash
 #### Kubernetes
 
   - [Kubernetes setup](https://kubernetes.io/docs/setup/)
+  - [Kubernetes persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)

@@ -18,3 +18,10 @@ spec:
         - name: worker
           # Containers image repo from docker-hub
           image: ae1663830a/multi-worker
+          env:
+            - name: REDIS_HOST
+              # name of redis-cluster-ip config
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              # port of redis-cluster-ip
+              value: 6379
