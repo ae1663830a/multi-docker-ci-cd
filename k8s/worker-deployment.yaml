@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  # How many pods will be created
+  replicas: 1
+  selector:
+    matchLabels:
+      component: worker
+  # Pods will be created by config below
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec:
+      containers:
+        - name: worker
+          # Containers image repo from docker-hub
+          image: ae1663830a/multi-worker
