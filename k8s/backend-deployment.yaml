@@ -27,13 +27,22 @@ spec:
               value: redis-cluster-ip-service
             - name: REDIS_PORT
              # port of redis-cluster-ip
-              value: 6379
+              value: '6379'
             # POSTGRES ENV VARIABLES
             - name: PGUSER
               value: postgres
             - name: PGHOST
               value: postgres-cluster-ip-service
             - name: PGPORT
-              value: 5432
+              value: '5432'
             - name: PGDATABASE
               value: postgres
+            # env variable in postgres container
+            - name: PGPASSWORD
+              valueFrom:
+                # Secret object in k8s
+                secretKeyRef:
+                  # secret name
+                  name: pgpassword
+                  # key which stores password value
+                  key: PGPASSWORD

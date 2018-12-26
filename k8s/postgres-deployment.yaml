@@ -26,8 +26,18 @@ spec:
           ports:
             - containerPort: 5432
           volumeMounts:
-            # Location where postgres stores data
-            - mountPath: /var/lib/postgresql/data
-              subPath: postgres
-              # Choose the volume from volumes part ^
+            - # Choose the volume from volumes part ^
               name: postgres-storage
+              # Location where postgres stores data
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+          env:
+            # env variable in postgres container
+            - name: PGPASSWORD
+              valueFrom:
+                # Secret object in k8s
+                secretKeyRef:
+                  # secret name
+                  name: pgpassword
+                  # key which stores password value
+                  key: PGPASSWORD

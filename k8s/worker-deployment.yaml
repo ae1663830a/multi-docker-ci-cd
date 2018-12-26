@@ -24,4 +24,4 @@ spec:
               value: redis-cluster-ip-service
             - name: REDIS_PORT
               # port of redis-cluster-ip
-              value: 6379
+              value: '6379'

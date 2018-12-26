@@ -112,6 +112,12 @@ kubectl get pv
 kubectl describe pv
 ```
 
+Creating a k8s object as an example creation of a secret to store env variable PGPASSWORD
+```bash
+kubectl create secret <type> <secret-name> --from-literal <key>=<value>
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=<password>
+```
+
 ## USEFUL LINKS
 
 #### Docker Compose
