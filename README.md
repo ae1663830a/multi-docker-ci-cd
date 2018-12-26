@@ -79,9 +79,9 @@ kubectl delete -f <k8s-config-file>.yaml
 kubectl delete -f frontend-pod.yaml
 ```
 
-Delete pod
+Delete k8s object
 ```bash
-kubectl delete pod <pod-tag>
+kubectl delete <kind-name> <tag>
 kubectl delete pod frontend-deployment-764d755d97-jcz85
 ```
 
