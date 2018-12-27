@@ -29,7 +29,7 @@ before_install:
   # gcloud cluster name
   - gcloud container clusters get-credentials multi-cluster
   # Build image to run tests
-  - docker build -t ae1663830a/front-test -f ./frontend/Dockerfile-dev ./frontend
+  - docker build -t ae1663830a/frontend-test -f ./frontend/Dockerfile-dev ./frontend
 
 script:
   - docker run ae1663830a/frontend-test npm run test -- --coverage
