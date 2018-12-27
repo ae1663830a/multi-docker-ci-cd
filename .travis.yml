@@ -28,6 +28,8 @@ before_install:
   - gcloud config set compute/zone europe-north1-a
   # gcloud cluster name
   - gcloud container clusters get-credentials multi-cluster
+  # 3 commands above can be replaced with this one below
+  # gcloud container clusters get-credentials multi-cluster --zone europe-north1-a --project multi-docker
   # Build image to run tests
   - docker build -t ae1663830a/frontend-test -f ./frontend/Dockerfile-dev ./frontend
 
@@ -42,4 +44,4 @@ deploy:
   provider: script
   script: bash ./deploy.sh
   on:
-    branch: master
+    branch: gc_k8s
