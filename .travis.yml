@@ -1,6 +1,12 @@
 sudo: required
 services:
   - docker
+env:
+  global:
+    # SHA of last git commit
+    - GIT_SHA=$(git rev-parse HEAD)
+    # disable all prompts from gcloud
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
   # install google cloud on travis
   - curl https://sdk.cloud.google.com | bash > /dev/null;
