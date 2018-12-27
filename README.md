@@ -14,6 +14,14 @@
 
 ## KUBERNETES
 
+**IMPORTANT** Setup steps:
+  - kubectl apply -f k8s/
+  - create environment variables
+  - create secret for env passwords
+  - ingress configuration (minikube)
+  - install helm & ingress configuration(gcloud env)
+
+
 ### Start application
 
 **IMPORTANT** Images which are used in the project must exist in [Docker Hub](https://hub.docker.com/search/?q=ae1663830a&type=image).  
@@ -43,7 +51,7 @@ minikube dashboard
   - Generic
   - DockerRegistry
 
-### Ingress configuration
+### Ingress configuration on minikube
 
 **IMPORTANT** *The following **Mandatory Command** is required for all deployments* as written in [documentation](https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command).
 ```bash
@@ -55,6 +63,40 @@ minikube addons enable ingress
 ```
 
 #### TODO: more info
+
+
+## KUBERNETES ON GOOGLE CLOUD CLUSTER
+
+  - set project
+```bash
+gcloud container clusters get-credentials multi-cluster --zone europe-north1-a --project multi-docker
+```
+
+  - Create secret
+```bash
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=<password>
+```
+
+  - Install helm
+```bash
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+  - Creating service account for tiller enabling [Role-based Access Control](https://docs.helm.sh/using_helm/#example-service-account-with-cluster-admin-role)
+```bash
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+```
+  - Initialize helm
+```bash
+helm init --service-account tiller --upgrade
+```
+
+  - Installing ingress
+```bash
+helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
+```
 
 ## USEFUL COMMANDS
 
@@ -172,3 +214,4 @@ kubectl create secret generic pgpassword --from-literal PGPASSWORD=<password>
   - [Kubernetes persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
   - [Ingress nginx documentation](https://kubernetes.github.io/ingress-nginx/)
   - [Studying the K8s Ingress system](https://www.joyfulbikeshedding.com/blog/2018-03-26-studying-the-kubernetes-ingress-system.html)
+  - [Using helm](https://docs.helm.sh/using_helm/)
