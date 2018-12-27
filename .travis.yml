@@ -1,0 +1,18 @@
+sudo: required
+services:
+  - docker
+before_install:
+  # install google cloud on travis
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  # gcloud > IAM & admin > service accounts > create service account
+  # download file.json and encrypt file with travis
+  # docker run -it -v $(pwd):/app ruby:2.3 /bin/bash
+  # gem install travis
+  # travis login
+  # travis encrypt-file multi-docker.json -r ae1663830a/multi-docker-ci-cd
+  # copy response command here and add encrypted file to git repo
+  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in multi-docker.json.enc -out multi-docker.json -d
+  # authorization with created user in gcloud
+  - gcloud auth activate-service-account --key-file multi-docker.json
